@@ -1,28 +1,32 @@
+import { getItem } from '@/lib/data';
 import styles from './singleItem.module.css'
 import Image from 'next/image'
+import ItemUser from '@/components/itemUser/itemUser';
+import { Suspense } from 'react';
 
-const SingleItemPage = () => {
+const SingleItemPage = async ({params}) => {
+
+  const { slug } = params;
+  const item = await getItem(slug);
+
   return (
     <div className={styles.container}>
       <div className={styles.imgContainer}>
-        <Image src="/product/omnisphere.jpg" alt="omni" fill className={styles.img}/>
+        <Image src={item?.src} alt="Foto kit" fill className={styles.img}/>
       </div>                                                              
       <div className={styles.textContainer}>
-        <h1 className={styles.title}>Title</h1>
+        <h1 className={styles.title}>{item?.title}</h1>
         <div className={styles.detail}>
-          <Image src="/product/omnisphere.jpg" alt="pfp" width={50} height={50} className={styles.avatar}/>
+          {item && 
+          (<Suspense fallback={<div>Loading...</div>}>
+            <ItemUser userId={item.userId} />
+          </Suspense>)}
         <div className={styles.detailText}>
-          <span className={styles.detailTitle}>Autore</span>
-          <span className={styles.detailValue}>Uno frocio</span>
-        </div>
-        <div className={styles.detailText}>
-          <span className={styles.detailTitle}>Pubblicato</span>
-          <span className={styles.detailValue}>5000$</span>
+          <span className={styles.detailTitle}>Price</span>
+          <span className={styles.detailValue}>{item?.price}</span>
         </div>
         </div>
-        <div className={styles.content}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque optio rerum enim temporibus officia nihil animi, explicabo amet laborum consequatur? Quas corrupti maiores facilis sapiente ea nostrum porro dolore sequi?
-        </div>
+        <div className={styles.content}> {item?.body} </div>
       </div>
     </div>
   )

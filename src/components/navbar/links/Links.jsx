@@ -7,7 +7,7 @@ import Image from "next/image";
 
 const links = [
   {
-      title: "Homepage",
+      title: "Home Page",
       path: "/",
   },
   {
@@ -28,9 +28,9 @@ const Links = () => {
 
   const [open, setOpen] = useState(false);
 
-
-  const session = true;
-  const isAdmin = true;
+  //Da ignorare
+  const session = false;
+  const isAdmin = false;
 
   return (
     <div className={styles.container}>
@@ -50,7 +50,7 @@ const Links = () => {
 
     <Image
         className={styles.menuButton}
-        src="/menu.png"
+        src="/system/menu.png"
         alt=""
         width={30}
         height={30}

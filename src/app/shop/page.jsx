@@ -1,30 +1,19 @@
 import ItemCard from "@/components/itemCard/itemCard";
 import styles from "./shop.module.css";
-//import { getPosts } from "@/lib/data";
+import { getItems } from "@/lib/data";
 
 const ShopPage = async () => {
 
-  // FETCH DATA WITH AN API
-  //const posts = await getData();
-
   // FETCH DATA WITHOUT AN API
-  // const posts = await getPosts();
+  const items = await getItems();
 
   return (
     <div className={styles.container}>
-      <div className={styles.item}>
-        <ItemCard />
-      </div>
-
-      <div className={styles.item}>
-        <ItemCard />
-      </div>
-
-      <div className={styles.item}>
-        <ItemCard />
-      </div>
-
-
+      {items.map((item) => (
+        <div className={styles.item} key={item.id}>
+          <ItemCard item={item}></ItemCard>
+        </div>
+      ))}
     </div>
   );
 };

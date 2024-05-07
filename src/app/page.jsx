@@ -1,23 +1,24 @@
-
 import Image from "next/image";
 import styles from "./home.module.css";
+import Link from "next/link";
 
 const Home = () => {
   return (
     <div className={styles.container}>
       <div className={styles.textContainer}>
-        <h1 className={styles.title}>Creative Thoughts Agency.</h1>
+        <h1 className={styles.title}>Producer Stuff</h1>
         <p className={styles.desc}>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero
-          blanditiis adipisci minima reiciendis a autem assumenda dolore.
+          Find your sound, unleash your creativity!
+          Browse millions of royalty-free one-shots, loops, FX, MIDI, and presets 
+          in a sample library deep enough to get lost in. It all starts on Producer Stuff.
         </p>
         <div className={styles.buttons}>
-          <button className={styles.button}>Learn More</button>
+          <Link href='/about' className={styles.button}>Learn More</Link>
           <button className={styles.button}>Contact</button>
         </div>
       </div>
       <div className={styles.imgContainer}>
-        <Image src="/home.svg" alt="Home foto" fill className={styles.heroImg}/>
+        <Image src="/home12.webp" alt="Home foto" fill className={styles.heroImg}/>
       </div>
     </div>
   );
