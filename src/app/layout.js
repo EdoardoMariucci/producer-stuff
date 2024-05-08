@@ -3,6 +3,8 @@ import './globals.css'
 import Navbar from '@/components/navbar/Navbar'
 import Footer from '@/components/footer/Footer'
 
+import { ClerkProvider, SignInButton, SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
+
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
@@ -12,6 +14,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
+    <ClerkProvider>
     <html lang="en">
       <body className={inter.className}>
           <div className="container">
@@ -21,5 +24,6 @@ export default function RootLayout({ children }) {
           </div>
       </body>
     </html>
+    </ClerkProvider>
   );
 }

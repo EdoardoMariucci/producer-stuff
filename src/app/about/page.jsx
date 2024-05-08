@@ -32,7 +32,7 @@ const AboutPage = () => {
       </div>
       <div className={styles.imgContainer}>
         <Image
-          src="/about.svg"
+          src="/page/about.webp"
           alt="About Image"
           fill
           className={styles.img}

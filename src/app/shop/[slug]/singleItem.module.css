@@ -6,7 +6,7 @@
 .imgContainer {
     flex: 1;
     position: relative;
-    height: calc(115vh - 500px);
+    height: calc(95vh - 430px);
 }
 
 .img{

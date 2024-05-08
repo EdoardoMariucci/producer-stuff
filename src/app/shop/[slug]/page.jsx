@@ -4,10 +4,17 @@ import Image from 'next/image'
 import ItemUser from '@/components/itemUser/itemUser';
 import { Suspense } from 'react';
 
+import { currentUser } from '@clerk/nextjs/server';
+import { redirect } from "next/navigation";
+
 const SingleItemPage = async ({params}) => {
 
   const { slug } = params;
   const item = await getItem(slug);
+  const user = await currentUser();
+
+  if (!user) return (redirect('/sign-in'));
+  if (!item) return (redirect('/not-found.jsx'));
 
   return (
     <div className={styles.container}>

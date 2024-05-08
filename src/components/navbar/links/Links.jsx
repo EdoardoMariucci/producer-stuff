@@ -5,6 +5,8 @@ import NavLink from "./navLink/navLink";
 import { useState } from "react";
 import Image from "next/image";
 
+import { UserButton, useUser } from "@clerk/clerk-react";
+
 const links = [
   {
       title: "Home Page",
@@ -24,13 +26,12 @@ const links = [
   },
 ];
 
+
+
 const Links = () => {
 
   const [open, setOpen] = useState(false);
-
-  //Da ignorare
-  const session = false;
-  const isAdmin = false;
+  const { isSignedIn, user, isLoaded } = useUser();
 
   return (
     <div className={styles.container}>
@@ -38,14 +39,11 @@ const Links = () => {
       {links.map((link) => (
         <NavLink item={link} key={link.title} />
       ))}
-      {session ? (
-        <>
-          {isAdmin && <NavLink item={{title: "Admin", path:"/admin"}}/>}
-          <button className={styles.logout}>Logout</button>
-        </>
+      {isSignedIn ? (
+          <UserButton />
       ) : (
-        <NavLink item={{title:"Login", path:"/login"}} />
-      )}
+        <NavLink item={{title:"Login", path:"/sign-in"}} />
+      )}      
     </div>
 
     <Image
