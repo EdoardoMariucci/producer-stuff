@@ -2,7 +2,7 @@
 
 import styles from './links.module.css'
 import NavLink from "./navLink/navLink";
-import { useState } from "react";
+import {useState, useEffect } from "react";
 import Image from "next/image";
 
 import { UserButton, useUser } from "@clerk/clerk-react";
@@ -26,12 +26,32 @@ const links = [
   },
 ];
 
-
-
 const Links = () => {
 
   const [open, setOpen] = useState(false);
   const { isSignedIn, user, isLoaded } = useUser();
+
+  /**/
+  /*useEffect(() => {
+    const body = document.body;
+
+    if (open) {
+      body.classList.add('bodyNoScroll');
+    } else {
+      body.classList.remove('bodyNoScroll');
+    }
+
+    // Pulisci l'effetto quando il componente viene smontato
+    return () => {
+      body.classList.remove('bodyNoScroll');
+    };
+  }, [open]);*/
+
+  /**/
+
+  const closeMobileMenu = () => {
+    setOpen(false);
+  };
 
   return (
     <div className={styles.container}>
@@ -57,11 +77,16 @@ const Links = () => {
       {open && (
         <div className={styles.mobileLinks}>
           {links.map((link) => (
-            <NavLink item={link} key={link.title} />
+            <NavLink item={link} key={link.title} onClick={closeMobileMenu} />
           ))}
+          
+          {isSignedIn ? (
+            <UserButton />
+          ) : (
+            <NavLink item={{title:"Login", path:"/sign-in"}} onClick={closeMobileMenu}/>
+          )}
         </div>
       )}
-
   </div>
   )
 }

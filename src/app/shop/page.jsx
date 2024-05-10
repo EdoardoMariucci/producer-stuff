@@ -7,7 +7,6 @@ import { redirect } from "next/navigation";
 
 const ShopPage = async () => {
 
-  // FETCH DATA WITHOUT AN API
   const items = await getItems();
   const user = await currentUser();
 

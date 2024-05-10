@@ -4,7 +4,7 @@ import Link from "next/link";
 import styles from "./navLink.module.css";
 import { usePathname } from "next/navigation";
 
-const NavLink = ({ item }) => {
+const NavLink = ({ item, onClick }) => {
   const pathName = usePathname();
 
   return (
@@ -13,6 +13,13 @@ const NavLink = ({ item }) => {
       className={`${styles.container} ${
         pathName === item.path && styles.active
       }`}
+
+      onClick={(e) => {
+        if (onClick) {
+          onClick(e);
+        }
+      }}
+
     >
       {item.title}
     </Link>

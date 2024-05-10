@@ -1,7 +1,7 @@
 const users = [
-    {id:1, name: '3ddy'},
-    {id:2, name: 'Metro Boomin'},
-    {id:3, name: 'BNYX'},
+    {id:1, name: '3ddy', img: '/producer/3ddy.png'},
+    {id:2, name: 'Metro Boomin', img: '/producer/metroBoomin.jpg'},
+    {id:3, name: 'BNYX', img: '/producer/BNYX.jpg'},
 ];
 
 const packs = [
