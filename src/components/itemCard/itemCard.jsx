@@ -3,6 +3,7 @@ import styles from "./itemCard.module.css"
 import Link from "next/link"
 
 const ItemCard = ({item}) => {
+  //console.log(item);
   return (
     <div className={styles.container}>
       <div className={styles.top}>

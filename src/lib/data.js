@@ -1,4 +1,4 @@
-const users = [
+/*const users = [
     {id:1, name: '3ddy', img: '/producer/3ddy.png'},
     {id:2, name: 'Metro Boomin', img: '/producer/metroBoomin.jpg'},
     {id:3, name: 'BNYX', img: '/producer/BNYX.jpg'},
@@ -22,4 +22,4 @@ export const getItem = async (id) => {
 
 export const getUser = async (id) => {
     return users.find((user) => user.id === parseInt(id));
-}
+}*/
