@@ -12,15 +12,6 @@ export const getItems = async () => {
     });
     return items;
 }
-
-export const getUser = async (userName) => {
-    const users = await prisma.user.findUnique({
-        where:{
-            id: userName
-        } 
-    });
-    return users;
-}
   
 export const getItemBySlug = async (slug) => {
     const item = await prisma.pack.findUnique({
@@ -40,5 +31,19 @@ export const getItemBySlug = async (slug) => {
   
     return item;
 };
-  
+
+
+export const getUser = async (userName) => {
+  const users = await prisma.user.findUnique({
+      where:{
+          id: userName
+      } 
+  });
+  return users;
+}
+
+export const getUserAll = async () => {
+  const users = await prisma.user.findMany();
+  return users;
+}
   
