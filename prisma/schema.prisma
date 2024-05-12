@@ -4,6 +4,8 @@
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
+//npx prisma migrate dev --name ...
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -24,8 +26,9 @@ model Pack {
   id     Int      @id @default(autoincrement())
   title  String
   body   String
-  src    String
-  date   DateTime
+  srcImg String
+  srcPrv String
+  date   DateTime @default(now())
   price  String
   userId Int
   user   User     @relation(fields: [userId], references: [id])

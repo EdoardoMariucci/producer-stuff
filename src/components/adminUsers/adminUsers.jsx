@@ -13,17 +13,17 @@ const AdminUsers = async () => {
         {users.map((user) => (
           <div className={styles.user} key={user.id}>
             <div className={styles.detail}>
-              <Image
+              {<Image
                 src={user.img || "/system/noavatar.png"}
                 alt=""
                 width={50}
                 height={50}
-              />
+              />}
               <span>{user.name}</span>
             </div>
-            <form action=''>
+            <form action="/api/deleteUser" method="post" >
               <input type="hidden" name="id" value={user.id} />
-              <button className={styles.userButton}>Delete</button>
+              <button type="submit" className={styles.userButton}>Delete</button>
             </form>
           </div>
         ))}
