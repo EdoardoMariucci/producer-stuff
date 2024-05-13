@@ -21,7 +21,7 @@ const SingleItemPage = async ({params}) => {
   return (
     <div className={styles.container}>
       <div className={styles.imgContainer}>
-        <Image src={item.src} alt="Foto kit" fill className={styles.img}/>
+        <Image src={item.srcImg || "/system/noFotoKit.png"} alt="Foto kit" fill className={styles.img}/>
       </div>                                                              
       <div className={styles.textContainer}>
         <h1 className={styles.title}>{item.title}</h1>
@@ -32,10 +32,14 @@ const SingleItemPage = async ({params}) => {
           </Suspense>)}
         <div className={styles.detailText}>
           <span className={styles.detailTitle}>Price</span>
-          <span className={styles.detailValue}>{item.price}</span>
+          <span className={styles.detailValue}>{item.price} $</span>
         </div>
         </div>
         <div className={styles.content}> {item.body} </div>
+        <audio controls src={item.srcPrv} />
+        <a href={item.srcPrv} download className={styles.downloadLink}>
+          Download sample pack
+        </a>
       </div>
     </div>
   )

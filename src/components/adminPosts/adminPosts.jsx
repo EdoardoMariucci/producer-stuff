@@ -14,14 +14,14 @@ const AdminPosts = async () => {
         <div className={styles.post} key={item.id}>
           <div className={styles.detail}>
             <Image
-              src={item.img || "/system/noavatar.png"}
+              src={item.srcImg || "/system/noFotoKit.png"}
               alt=""
               width={50}
               height={50}
             />
             <span className={styles.postTitle}>{item.title}</span>
           </div>
-          <form action=''>
+          <form action="/api/deletePack" method="post" >
             <input type="hidden" name="id" value={item.id} />
             <button className={styles.postButton}>Delete</button>
           </form>

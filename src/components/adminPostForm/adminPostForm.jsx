@@ -10,8 +10,8 @@ const AdminPostForm = async () => {
       <h1>Add New Pack</h1>
       <input type="text" name="title" placeholder="Title" />
       <input type="text" name="body" placeholder="Description" rows={10} />
-      <input type="text" name="imgSrc" placeholder="Image Surce" />
-      <input type="text" name="prvSrc" placeholder="Preview Surce" />
+      <input type="text" name="imgSrc" placeholder="Image Surce" defaultValue="/product/"/>
+      <input type="text" name="prvSrc" placeholder="Preview Surce" defaultValue="/preview/" />
       <input type="text" name="price" placeholder="Price" />
       <select name="userId"> {/*metodo brutto ma funziona*/}
         {users.map((user) => (

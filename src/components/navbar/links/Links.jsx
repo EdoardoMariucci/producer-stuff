@@ -2,13 +2,10 @@
 
 import styles from './links.module.css'
 import NavLink from "./navLink/navLink";
-import {useState, useEffect } from "react";
+import {useState } from "react";
 import Image from "next/image";
 
 import { UserButton, useUser } from "@clerk/clerk-react";
-//import { useUser } from '@clerk/nextjs';
-//import { currentUser } from '@clerk/nextjs/server';
-
 
 const links = [
   { title: "Home Page", path: "/" },

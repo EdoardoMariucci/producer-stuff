@@ -32,7 +32,6 @@ export const getItemBySlug = async (slug) => {
     return item;
 };
 
-
 export const getUser = async (userName) => {
   const users = await prisma.user.findUnique({
       where:{

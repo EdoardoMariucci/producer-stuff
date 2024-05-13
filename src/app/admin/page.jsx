@@ -1,12 +1,22 @@
+//'use client';
+
 import { Suspense } from "react";
+//import { useUser } from "@clerk/clerk-react";
 import styles from "./admin.module.css";
 
 import AdminPosts from "@/components/adminPosts/adminPosts";
 import AdminPostForm from "@/components/adminPostForm/adminPostForm";
 import AdminUsers from "@/components/adminUsers/adminUsers";
 import AdminUserForm from "@/components/adminUserForm/adminUserForm";
+import { redirect } from "next/navigation";
 
 const AdminPage = () => {
+
+  /*const {user, isLoaded} = useUser();
+  const isAdmin = user && user.primaryEmailAddress?.emailAddress === "eedoardo.mariucci@gmail.com";
+  
+  if(isLoaded && !isAdmin) return (redirect('/'));*/
+
   return (
     <div className={styles.container}>
       <div className={styles.row}>

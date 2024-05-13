@@ -3,12 +3,12 @@ import styles from "./itemCard.module.css"
 import Link from "next/link"
 
 const ItemCard = ({item}) => {
-  //console.log(item);
+
   return (
     <div className={styles.container}>
       <div className={styles.top}>
         <div className={styles.imgContainer}>
-            <Image src={item.src} alt="Foto kit" fill className={styles.img} />
+            <Image src={item.srcImg || "/system/noFotoKit.png"} alt="Foto kit" fill className={styles.img} />
         </div>
         <span className={styles.date}>{item.date}</span>
       </div> 
