@@ -4,10 +4,10 @@ const AdminUserForm = () => {
 
   return (
       <form action="/api/addUser" method="post" className={styles.container}>
-        <h1>Add New User</h1>
-        <input type="text" name="name" placeholder="Name" />
+        <h1>Aggiungi un nuovo produttore</h1>
+        <input type="text" name="name" placeholder="Nome" />
         <input type="text" name="imgSrc" placeholder="Image Surce" defaultValue="/producer/"/>
-        <button type="submit">Add</button>
+        <button type="submit">Aggiungi</button>
       </form>
   )
 }

@@ -23,7 +23,7 @@ const AdminUsers = async () => {
             </div>
             <form action="/api/deleteUser" method="post" >
               <input type="hidden" name="id" value={user.id} />
-              <button type="submit" className={styles.userButton}>Delete</button>
+              <button type="submit" className={styles.userButton}>Elimina</button>
             </form>
           </div>
         ))}

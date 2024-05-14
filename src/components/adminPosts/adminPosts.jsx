@@ -23,7 +23,7 @@ const AdminPosts = async () => {
           </div>
           <form action="/api/deletePack" method="post" >
             <input type="hidden" name="id" value={item.id} />
-            <button className={styles.postButton}>Delete</button>
+            <button className={styles.postButton}>Elimina</button>
           </form>
         </div>
       ))}

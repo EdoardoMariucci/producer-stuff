@@ -24,6 +24,11 @@ export default async function handler(req, res) {
             return res.status(400).json({ error: "Devi selezionare un producer" });
         }
 
+        const pricePattern = /^[0-9]+(\.[0-9]{1,2})?$/;
+        if (!pricePattern.test(price)) {
+            return res.status(400).json({ error: "Il prezzo deve essere un intero o un numero decimale con al massimo due cifre decimali." });
+        }
+
         try {
             
             const imgPath = path.join(process.cwd(), 'public', imgSrc.slice(1)); 
