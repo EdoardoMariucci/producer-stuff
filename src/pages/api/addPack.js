@@ -11,12 +11,12 @@ export default async function handler(req, res) {
             return res.status(400).json({ error: "Hai dimenticato uno dei campi" });
         }
 
-        if (!imgSrc.startsWith('/')) {
-            return res.status(400).json({ error: "Invalid image source path. Must start with '/'." });
+        if (!imgSrc || imgSrc === '/product/' || !imgSrc.startsWith('/')) {
+            return res.status(400).json({ error: "Invalid image source path." });
         }
 
-        if (!prvSrc.startsWith('/')) {
-            return res.status(400).json({ error: "Invalid preview source path. Must start with '/'." });
+        if (!prvSrc || prvSrc === '/preview/' || !prvSrc.startsWith('/')) {
+            return res.status(400).json({ error: "Invalid preview source path." });
         }
 
         const numericUserId = parseInt(userId, 10);
@@ -24,20 +24,15 @@ export default async function handler(req, res) {
             return res.status(400).json({ error: "Devi selezionare un producer" });
         }
 
-        
-
         try {
-            if (imgSrc) {
-                const imgPath = path.join(process.cwd(), 'public', imgSrc.slice(1)); 
-                await fs.access(imgPath);
-            }
-
-            if (prvSrc) {
-                const prvPath = path.join(process.cwd(), 'public', prvSrc.slice(1));
-                await fs.access(prvPath);
-            }
             
-            const newPack = await prisma.pack.create({
+            const imgPath = path.join(process.cwd(), 'public', imgSrc.slice(1)); 
+            await fs.access(imgPath);
+        
+            const prvPath = path.join(process.cwd(), 'public', prvSrc.slice(1));
+            await fs.access(prvPath);           
+            
+            await prisma.pack.create({
                 data: {
                     title: title,
                     body: body,
@@ -47,7 +42,9 @@ export default async function handler(req, res) {
                     userId: numericUserId
                 }
             });
-            res.status(200).json(newPack);
+            res.writeHead(302, { Location: '/admin' });
+            res.end();
+            
         } catch (error) {
             if (error.code === 'ENOENT') {
                 res.status(404).json({ error: "Immagine o preview non trovata" });

@@ -8,7 +8,9 @@ export default async function handler(req, res) {
             const deletePack = await prisma.pack.delete({
                 where: { id: parseInt(id) },
             });
-            res.status(200).json(deletePack);
+            
+            res.writeHead(302, { Location: '/admin' });
+            res.end();
         } catch (error) {
             res.status(500).json({ error: "Failed to delete pack" });
         }

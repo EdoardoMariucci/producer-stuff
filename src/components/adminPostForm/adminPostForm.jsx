@@ -14,6 +14,7 @@ const AdminPostForm = async () => {
       <input type="text" name="prvSrc" placeholder="Preview Surce" defaultValue="/preview/" />
       <input type="text" name="price" placeholder="Price" />
       <select name="userId"> {/*metodo brutto ma funziona*/}
+      <option defaultValue="Seleziona un producer" >Seleziona un producer</option>
         {users.map((user) => (
             <option key={user.id} value={user.id}>
             {user.name}

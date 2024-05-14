@@ -11,23 +11,23 @@ export default async function handler(req, res) {
             return res.status(400).json({error: 'Devi inserire il nome'});
         }
 
-        if (imgSrc && !imgSrc.startsWith('/')) {
-            return res.status(400).json({ error: "Invalid image source path. Must start with '/'." });
+        if (!imgSrc || imgSrc === '/producer/' || !imgSrc.startsWith('/')) {
+            return res.status(400).json({ error: "Invalid image source path." });
         }
 
         try {
-            if (imgSrc) {
-                const filePath = path.join(process.cwd(), 'public', imgSrc.slice(1)); // Rimuovi l'iniziale '/'
-                await fs.access(filePath);
-            }
+            const filePath = path.join(process.cwd(), 'public', imgSrc.slice(1)); // Rimuovi l'iniziale '/'
+            await fs.access(filePath);
 
-            const newUser = await prisma.user.create({
+            await prisma.user.create({
                 data: {
                     name: name,
                     img: imgSrc
                 }
             });
-            res.status(200).json(newUser);
+            res.writeHead(302, { Location: '/admin' });
+            res.end();
+
         } catch (error) {
             if (error.code === 'ENOENT') {
                 res.status(404).json({ error: "Image not found in public directory" });
